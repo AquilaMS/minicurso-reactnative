@@ -1,37 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Platform,
+} from 'react-native';
 
 export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Minicurso GoNative</Text>
+        </View>
+
+        <ScrollView contentContainerStyle={styles.repoList}>
+          <View style={styles.repo} />
+          <View style={styles.repo} />
+          <View style={styles.repo} />
+          <View style={styles.repo} />
+          <View style={styles.repo} />
+          <View style={styles.repo} />
+          <View style={styles.repo} />
+        </ScrollView>
       </View>
     );
   }
@@ -40,18 +33,31 @@ export default class App extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#333',
+  },
+
+  header: {
+    height: (Platform.OS === 'ios') ? 70 : 50,
+    paddingTop: (Platform.OS === 'ios') ? 20 : 0,
+    backgroundColor: '#FFF',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+
+  headerText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+
+  repoList: {
+    padding: 20,
+  },
+
+  repo: {
+    padding: 20,
+    backgroundColor: '#FFF',
+    height: 120,
+    marginBottom: 20,
+    borderRadius: 5,
   },
 });
